@@ -1,0 +1,11 @@
+<md-toolbar color="primary">
+  <div class="button-row">
+    <button md-button (click)="openSignupDialog()">REGISTER </button>
+    <button md-button (click)="openLoginDialog()"> LOG IN </button>
+  </div>
+  <div *ngIf="loggedIn()" class="button-row">
+    <button md-button>
+      I am, {{ username }} <md-icon>keyboard_arrow_down</md-icon>
+    </button>
+  </div>
+</md-toolbar>
