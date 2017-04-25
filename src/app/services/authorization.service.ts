@@ -3,6 +3,8 @@ import { Http, Headers, Response, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map'
 
+import { User } from '../models/user';
+
 @Injectable()
 export class AuthorizationService {
 
@@ -25,6 +27,15 @@ export class AuthorizationService {
         if(token){
           this.token = token
           localStorage.setItem('user', JSON.stringify({ token: token, username: username }));
+
+          this.getInfo().subscribe(
+            data => {
+              let userInfo = data as User;
+              localStorage.removeItem('user');
+              localStorage.setItem('user', JSON.stringify({ token: token, username: username, user: userInfo}));
+            }
+          );
+
           return true;
         }
         else{
@@ -51,6 +62,14 @@ export class AuthorizationService {
       });
   }
 
+  getInfo(): Observable<any> {
+    let url = 'http://fit.kbtu.kz:8080/auth/info/';
+        
+    console.log(this.jwt());
+
+    return this.http.get(url, this.jwt()).map((res: Response) => res.json());
+  }
+
   isLoggedIn(): Boolean {
       let currentUser = JSON.parse(localStorage.getItem('user'));
       if (currentUser && currentUser.token) {
@@ -66,4 +85,14 @@ export class AuthorizationService {
     location.reload();
   }
 
+  private jwt() {
+        // create authorization header with jwt token
+        let currentUser = JSON.parse(localStorage.getItem('user'));
+        if (currentUser && currentUser.token) {
+            console.log(currentUser);
+            let headers = new Headers({ 'Content-Type': 'application/json',
+                                        'Authorization': 'JWT ' + currentUser.token });
+            return new RequestOptions({ headers: headers });
+        }
+    }
 }

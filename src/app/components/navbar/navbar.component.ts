@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MdDialog } from '@angular/material';
 
 import { AuthComponent, AuthRegisterComponent } from '../auth/auth.component';
 import { AuthorizationService } from '../../services/authorization.service';
+
+import { BookService } from '../../services/book.service';
+
+import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-navbar',
@@ -12,9 +16,13 @@ import { AuthorizationService } from '../../services/authorization.service';
 export class NavbarComponent implements OnInit {
 
   username: string;
+  books: Book[];
 
-  constructor(public dialog: MdDialog, public authService: AuthorizationService) {
+  constructor(public dialog: MdDialog, public authService: AuthorizationService, 
+              public bookService: BookService) {
     this.checkUser();
+
+    
   }
 
   checkUser(){
@@ -33,15 +41,14 @@ export class NavbarComponent implements OnInit {
 
   openLoginDialog() {
     this.dialog.open(AuthComponent);
-    this.checkUser();
   }
    
   openSignupDialog() {
     this.dialog.open(AuthRegisterComponent);
-    this.checkUser();
   }
 
   logout() {
     this.authService.logout();
+    this.username = null;
   }
 }

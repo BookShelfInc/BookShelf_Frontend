@@ -1,0 +1,15 @@
+<div *ngIf="book">
+    <h2>Detail of {{ book.title }}</h2>
+    {{ book.author.biography }}
+    
+    <div *ngIf="can"> 
+        <input type="text"  class="form-control" id="alterEgo" [(ngModel)]="model.review" name="alterEgo">
+        <button md-button (click)="addReview()">Create Review</button>
+    </div>
+
+    <review-list [currentBook]="book"></review-list>    
+</div>
+
+<div *ngIf="error">
+    <h2>Ohh... What a book :)</h2>   
+</div>

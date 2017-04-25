@@ -1,0 +1,12 @@
+      <div *ngFor="let book of books">
+        <md-card>
+            <md-card-header>
+                <md-card-title>{{ book.title }}</md-card-title>
+            </md-card-header>
+            <img src="http://fit.kbtu.kz:8080{{ book.cover }}" style="width:100px; height:100px">
+            <md-card-content>
+                <p>{{ book.author.first_name }} {{ book.author.last_name }} <br>{{ book.genre}}</p>
+            </md-card-content>
+            <button md-button (click)="goToDetail(book)">Book Detail</button>
+        </md-card>
+      </div>

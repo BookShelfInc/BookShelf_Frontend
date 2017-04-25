@@ -1,7 +1,11 @@
 <md-toolbar color="primary">
   <div class="button-row">
     <button md-button (click)="openSignupDialog()">REGISTER </button>
-    <button md-button (click)="openLoginDialog()"> LOG IN </button>
+    <button *ngIf="!username" md-button (click)="openLoginDialog()"> LOG IN </button>
+    <button *ngIf="username" md-button (click)="logout()">LOG OUT </button>
+    <button routerLink="/books" md-button>Book List</button>
+    <button routerLink="/author" md-button>Author</button>
+    <button routerLink="/my_page" md-button>My Page</button>
   </div>
   <div *ngIf="loggedIn()" class="button-row">
     <button md-button>
@@ -9,3 +13,4 @@
     </button>
   </div>
 </md-toolbar>
+<router-outlet></router-outlet>
