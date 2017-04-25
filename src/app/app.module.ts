@@ -11,9 +11,11 @@ import { AuthComponent, AuthRegisterComponent } from './components/auth/auth.com
 import { BookListComponent } from './components/book/book-list.component';
 import { BookDetailComponent } from './components/book/book-detail.component';
 import { ReviewListComponent } from './components/book/review-list.component';
+import { AuthorComponent } from './components/author/author.component';
 
 import { AuthorizationService } from './services/authorization.service';
 import { BookService } from './services/book.service';
+import { AuthorService } from './services/author.service';
 
 import { MaterialModule } from '@angular/material';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -28,6 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     BookDetailComponent,
     NavbarComponent,
     ReviewListComponent,
+    AuthorComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,12 +41,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     RouterModule.forRoot([
       { path: 'book/:id', component: BookDetailComponent },
       { path: 'books', component: BookListComponent },
+      { path: 'author/:id', component: AuthorComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
-      { path: '**', redirectTo: 'books', pathMatch: 'full'},      
+      { path: '**', redirectTo: 'books', pathMatch: 'full'},     
     ])
   ],
   entryComponents: [AuthComponent, AuthRegisterComponent],
-  providers: [AuthorizationService, BookService],
+  providers: [AuthorizationService, BookService, AuthorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

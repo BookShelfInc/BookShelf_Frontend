@@ -1,0 +1,6 @@
+<p>author works!</p>
+<div *ngIf="author">
+    <div *ngFor="let book of author.book_set">
+        <p>{{ book.title }}</p>
+    </div>
+</div>

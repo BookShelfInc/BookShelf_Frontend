@@ -1,5 +1,6 @@
 <div *ngIf="book">
     <h2>Detail of {{ book.title }}</h2>
+    <button md-button (click)="getAuthor(book.author.id)">Go to author page</button>
     {{ book.author.biography }}
     
     <div *ngIf="can"> 

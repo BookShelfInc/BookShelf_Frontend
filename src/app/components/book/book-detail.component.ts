@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'; 
-import { ActivatedRoute, Params }   from '@angular/router';
+import { ActivatedRoute, Params, Router }   from '@angular/router';
 
 import { BookService } from '../../services/book.service';
 import { Book } from '../../models/book';
@@ -18,7 +18,8 @@ export class BookDetailComponent implements OnInit{
     can = false;
 
     constructor(private _route: ActivatedRoute,
-                private bookService: BookService) {}
+                private bookService: BookService,
+                private router: Router) {}
 
     ngOnInit(){
         this._route.params
@@ -60,5 +61,9 @@ export class BookDetailComponent implements OnInit{
             console.log(this.bookService.addReview(review));
         }
         console.log(this.model.review);
+    }
+
+    getAuthor(id: number){
+        this.router.navigate(['/author', id]);
     }
 }
