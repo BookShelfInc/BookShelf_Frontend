@@ -27,7 +27,6 @@ export class AuthorComponent implements OnInit {
                         console.log(error);
                     }
             ); 
-          //console.log('b' + this.router.url);
     }
 
     

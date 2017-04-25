@@ -16,10 +16,14 @@ import { AuthorComponent } from './components/author/author.component';
 import { AuthorizationService } from './services/authorization.service';
 import { BookService } from './services/book.service';
 import { AuthorService } from './services/author.service';
+import { BlogService } from './services/blog.service';
 
 import { MaterialModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavbarComponent } from './components/navbar/navbar.component';
-
+import { BlogListComponent } from './components/blog-list/blog-list.component';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { PostCreateComponent } from './components/post-create/post-create.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     NavbarComponent,
     ReviewListComponent,
     AuthorComponent,
+    BlogListComponent,
+    PostDetailComponent,
+    PostCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,16 +45,20 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HttpModule,
     BrowserAnimationsModule,
     MaterialModule.forRoot(),
+    FlexLayoutModule,
     RouterModule.forRoot([
       { path: 'book/:id', component: BookDetailComponent },
       { path: 'books', component: BookListComponent },
       { path: 'author/:id', component: AuthorComponent },
+      { path: 'blog', component: BlogListComponent },
+      { path: 'blog/post/:id', component: PostDetailComponent },
+      { path: 'blog/create', component: PostCreateComponent },
       { path: '', redirectTo: 'books', pathMatch: 'full'},
       { path: '**', redirectTo: 'books', pathMatch: 'full'},     
     ])
   ],
   entryComponents: [AuthComponent, AuthRegisterComponent],
-  providers: [AuthorizationService, BookService, AuthorService],
+  providers: [AuthorizationService, BookService, AuthorService, BlogService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
