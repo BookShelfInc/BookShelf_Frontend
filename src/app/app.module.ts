@@ -24,6 +24,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BlogListComponent } from './components/blog-list/blog-list.component';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { PostCreateComponent } from './components/post-create/post-create.component';
+import { AuthorListComponent } from './components/author-list/author-list.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
     BlogListComponent,
     PostDetailComponent,
     PostCreateComponent,
+    AuthorListComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +51,7 @@ import { PostCreateComponent } from './components/post-create/post-create.compon
     RouterModule.forRoot([
       { path: 'book/:id', component: BookDetailComponent },
       { path: 'books', component: BookListComponent },
+      { path: 'author', component: AuthorListComponent },
       { path: 'author/:id', component: AuthorComponent },
       { path: 'blog', component: BlogListComponent },
       { path: 'blog/post/:id', component: PostDetailComponent },

@@ -7,7 +7,8 @@ import { Book } from '../../models/book';
 
 @Component({
     selector: 'review-list',
-    templateUrl: 'review-list.component.html'
+    templateUrl: 'review-list.component.html',
+    styleUrls: ['./review-list.component.css']
 })
 export class ReviewListComponent implements OnInit {  
     

@@ -26,7 +26,7 @@ export class BlogListComponent implements OnInit {
 
     this.blogService.getAllPosts().subscribe(
       data => {
-        this.posts = data as Post[]
+        this.posts = data as Post[];
         console.log(data);
       },
       error => {

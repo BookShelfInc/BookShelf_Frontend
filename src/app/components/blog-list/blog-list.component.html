@@ -7,7 +7,7 @@
             By {{ post.author.first_name }} {{ post.author.last_name }} <br> {{ post.publish_date }}
         </md-card-subtitle>
         <md-card-content> {{ post.content }} </md-card-content>
-
+        
         <md-card-actions>
             <button md-ripple="white" md-button>
               <md-icon *ngIf="post.isLiked" style="color: red">favorite</md-icon> 

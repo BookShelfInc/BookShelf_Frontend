@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router }   from '@angular/router';
-import { AuthorInfo } from '../../models/authorInfo';
+
 import { AuthorService } from '../../services/author.service';
+
+import { AuthorInfo } from '../../models/authorInfo';
+import { Book } from '../../models/book';
 
 @Component({
   selector: 'app-author',
@@ -29,6 +32,9 @@ export class AuthorComponent implements OnInit {
             ); 
     }
 
-    
+    goToDetail(book: Book){
+        this.router.navigate(['/book', book.id]);
+        console.log(book.id);
+    }
 
 }

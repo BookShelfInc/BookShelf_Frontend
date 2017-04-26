@@ -1,5 +1,7 @@
+import { User } from './user';
+
 export class Review {
-    user: number;
+    user: User;
     book: number;
     review: string;
 }
